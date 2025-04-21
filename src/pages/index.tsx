@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import AuthButtons from "@/components/AuthButtons";
 
 export default function Home() {
   return (
@@ -15,16 +16,21 @@ export default function Home() {
       </Head>
       <div className="bg-background min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 flex flex-col items-center justify-center p-4">
+        <main className="flex-1 flex flex-col items-center justify-center p-4 gap-4">
           <Card className="w-full max-w-md">
             <CardHeader>
-              <CardTitle>Welcome to your app</CardTitle>
-              <CardDescription>Use the prompt to modify the page.</CardDescription>
+              <CardTitle>Welcome to Firebase Buttons Demo</CardTitle>
+              <CardDescription>A demonstration of Firebase authentication with buttons</CardDescription>
             </CardHeader>
             <CardContent>
-              <Button className="w-full">Get Started</Button>
+              <p className="mb-4">This app demonstrates how to integrate Firebase authentication with interactive buttons.</p>
+              <Button className="w-full" onClick={() => window.scrollTo({ top: document.getElementById('auth-section')?.offsetTop, behavior: 'smooth' })}>Get Started</Button>
             </CardContent>
           </Card>
+          
+          <div id="auth-section" className="w-full flex justify-center">
+            <AuthButtons />
+          </div>
         </main>
       </div>
     </>
