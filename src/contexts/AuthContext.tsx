@@ -41,7 +41,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
       const authError = error as AuthError;
-      setError(authError.message);
+      // Map Firebase error codes to user-friendly messages
+      let errorMessage = "Failed to create account. Please try again.";
+      
+      if (authError.code === 'auth/email-already-in-use') {
+        errorMessage = "This email is already in use. Please try signing in or use a different email.";
+      } else if (authError.code === 'auth/invalid-email') {
+        errorMessage = "Please enter a valid email address.";
+      } else if (authError.code === 'auth/weak-password') {
+        errorMessage = "Password is too weak. Please use at least 6 characters.";
+      } else if (authError.code === 'auth/operation-not-allowed') {
+        errorMessage = "Email/password accounts are not enabled. Please contact support.";
+      }
+      
+      setError(errorMessage);
       console.error('Error signing up:', authError);
     }
   };
@@ -52,7 +65,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       const authError = error as AuthError;
-      setError(authError.message);
+      // Map Firebase error codes to user-friendly messages
+      let errorMessage = "Failed to sign in. Please try again.";
+      
+      if (authError.code === 'auth/invalid-credential' || 
+          authError.code === 'auth/invalid-email' || 
+          authError.code === 'auth/user-not-found' || 
+          authError.code === 'auth/wrong-password') {
+        errorMessage = "Invalid email or password. Please check your credentials and try again.";
+      } else if (authError.code === 'auth/user-disabled') {
+        errorMessage = "This account has been disabled. Please contact support.";
+      } else if (authError.code === 'auth/too-many-requests') {
+        errorMessage = "Too many unsuccessful login attempts. Please try again later or reset your password.";
+      }
+      
+      setError(errorMessage);
       console.error('Error signing in:', authError);
     }
   };

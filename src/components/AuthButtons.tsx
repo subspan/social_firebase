@@ -90,6 +90,9 @@ const AuthButtons: React.FC = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Enter the password for your account
+                  </p>
                 </div>
                 <Button type="submit" className="w-full">Sign In</Button>
               </form>
@@ -119,6 +122,9 @@ const AuthButtons: React.FC = () => {
                     required
                     minLength={6}
                   />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Password must be at least 6 characters long
+                  </p>
                 </div>
                 <Button type="submit" className="w-full">Create Account</Button>
               </form>
