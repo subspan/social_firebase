@@ -38,9 +38,9 @@ const AuthButtons: React.FC = () => {
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <CardTitle>Firebase Authentication</CardTitle>
+        <CardTitle>Account Access</CardTitle>
         <CardDescription>
-          {user ? 'You are currently signed in' : 'Please sign in or create an account'}
+          {user ? 'You are currently signed in' : 'Sign in to your account or create a new one'}
         </CardDescription>
       </CardHeader>
       <CardContent>
