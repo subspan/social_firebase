@@ -19,11 +19,11 @@ export default function Home() {
         <main className="flex-1 flex flex-col items-center justify-center p-4 gap-4">
           <Card className="w-full max-w-md">
             <CardHeader>
-              <CardTitle>Welcome to Firebase Buttons Demo</CardTitle>
-              <CardDescription>A demonstration of Firebase authentication with buttons</CardDescription>
+              <CardTitle>Welcome to Firebase Auth Demo</CardTitle>
+              <CardDescription>Email & Password Authentication</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="mb-4">This app demonstrates how to integrate Firebase authentication with interactive buttons.</p>
+              <p className="mb-4">This app demonstrates how to integrate Firebase email and password authentication with a clean user interface.</p>
               <Button className="w-full" onClick={() => window.scrollTo({ top: document.getElementById('auth-section')?.offsetTop, behavior: 'smooth' })}>Get Started</Button>
             </CardContent>
           </Card>
